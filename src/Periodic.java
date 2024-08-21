@@ -1,14 +1,14 @@
-public class Periodic extends BibliographicItem{
-    private String periodicity; //semana, mensal,trimestral
+public class Periodic extends BibliographicItem {
+    private String periodicity; // semana, mensal, trimestral
     private int size;
 
     public Periodic(String periodicity, int size, String title, String code, int yearOfPublication) {
-        super.setCode(title,code,yearOfPublication);
+        super(title, code, yearOfPublication); // Corrigido para usar o construtor da classe pai
         this.periodicity = periodicity;
         this.size = size;
     }
 
-    //Perioducity
+    // Periodicidade
     public String getPeriodicity() {
         return periodicity;
     }
@@ -17,7 +17,7 @@ public class Periodic extends BibliographicItem{
         this.periodicity = periodicity;
     }
 
-    //Size
+    // Volume
     public int getSize() {
         return size;
     }
@@ -28,14 +28,12 @@ public class Periodic extends BibliographicItem{
 
     @Override
     public String toString() {
-        public String toString() {
-            return "Periodic:" +getTitle() + ", Periodicity: " + periodicity+ ", Size: " + size  + "Year:" + getYearOfPublication() + ", Title: " + getTitle() + ", Code: " + getCode();
-        }
-    }
-    //Validando periocidade e volume
-    public void ValidateItemPeriodic(String periodicity, int size ) {
-        return periodicity != null;
-        return size > 0;
+        return "Periodic: " + getTitle() + ", Periodicity: " + periodicity + ", Size: " + size
+                + ", Year: " + getYearOfPublication() + ", Code: " + getCode();
     }
 
+    // Valida periocidade e volume
+    public boolean validateItemPeriodic() {
+        return periodicity != null && !periodicity.isEmpty() && size > 0;
+    }
 }

@@ -16,29 +16,33 @@ public abstract class BibliographicItem {
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getCode() {
         return code;
     }
+
     public void setCode(String code) {
         this.code = code;
     }
+
     public int getYearOfPublication() {
         return yearOfPublication;
     }
+
     public void setYearOfPublication(int yearOfPublication) {
         this.yearOfPublication = yearOfPublication;
     }
 
-    public boolean ValidateBibliographicItem(String title, String code, int yearOfPublication) {
-        if(title == null || code == null ) {
+    // Valida os atributos da classe
+
+    public boolean validateBibliographicItem() {
+        // Verifica se o título e o código não são nulos
+        if (title == null || title.isEmpty() || code == null || code.isEmpty()) {
             return false;
         }
-        int year;
-        try{
-            year = Integer.parseInt(yearOfPublication);
-        }catch (NumberFormatException e){
-            return false;
-        }
-        return year > 1000 && year <= 2024;
+
+        // Verifica o ano de publicação
+        return yearOfPublication > 1000 && yearOfPublication <= 2024;
     }
 }
+
