@@ -4,43 +4,56 @@ public class Library {
     Scanner sc = new Scanner(System.in);
     private List<BibliographicItem> item;
 
-    public Library(String item) {
-        item = new ArrayList<>();
+    public Library() {
+        this.item = new ArrayList<>();
     }
 
-    //Item
-    public String getItem() {//get
+    // Métodos get e set
+    public List<BibliographicItem> getItem() {
         return item;
     }
-    public void setItem(String item) {//set
+
+    public void setItem(List<BibliographicItem> item) {
         this.item = item;
     }
 
-    //Adicionar item
-    public void AddBook(Books book) {
-        if (book!=null) {
-        }try{
-            book.add(book);
-        }catch (RuntimeException e) {
-            System.out.println("Não foi inserido nenhum livro! tente novamente" );
+    // Adicionar item
+    public void addBook(Books book) {
+        if (book != null) {
+            try {
+                item.add(book);
+                System.out.println("Livro adicionado com sucesso!");
+            } catch (RuntimeException e) {
+                System.out.println("Erro ao adicionar o livro! Tente novamente.");
+            }
+        } else {
+            System.out.println("O livro é nulo e não pode ser adicionado.");
         }
     }
 
-    //Listar item
-    public void ListBooks() {
-        for (Books book : book) {
-            System.out.println(book);
-        }
-    }
-    //Buscar item
-    public void SearchBook(String item, BibliographicItem code, BibliographicItem title) {
-        String SearchCode;
-        System.out.println("Digite o codigo do livro:"+ sc.next);
-        if( SearchCode == code){
-            System.out.print("Livro encontrado:" + title);
-        }else{
-            System.out.print("Livro não encontrado");
+    // Listar itens
+    public void listBooks() {
+        if (item.isEmpty()) {
+            System.out.println("Nenhum livro cadastrado.");
+        } else {
+            for (BibliographicItem item : item) {
+                System.out.println(item);
+            }
         }
     }
 
+    // Buscar item
+    public void searchBook(String searchCode) {
+        boolean found = false;
+        for (BibliographicItem item : item) {
+            if (item.getCode().equals(searchCode)) {
+                System.out.println("Livro encontrado: " + item.getTitle());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Livro não encontrado.");
+        }
+    }
 }
