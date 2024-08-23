@@ -43,17 +43,14 @@ public class Library {
     }
 
     // Buscar item
-    public void searchBook(String searchCode) {
-        boolean found = false;
+    public BibliographicItem searchBook(String searchCode) {
         for (BibliographicItem item : item) {
             if (item.getCode().equals(searchCode)) {
                 System.out.println("Livro encontrado: " + item.getTitle());
-                found = true;
-                break;
+                return item;
             }
         }
-        if (!found) {
-            System.out.println("Livro não encontrado.");
-        }
+        throw new RuntimeException("Livro não encontrado: " + searchCode);
     }
+
 }

@@ -3,7 +3,7 @@ public class Periodic extends BibliographicItem {
     private int size;
 
     public Periodic(String periodicity, int size, String title, String code, int yearOfPublication) {
-        super(title, code, yearOfPublication); // Corrigido para usar o construtor da classe pai
+        super(title, code, yearOfPublication);
         this.periodicity = periodicity;
         this.size = size;
     }
